@@ -1,0 +1,31 @@
+{
+  "name": "benchmarks",
+  "version": "1.0.0",
+  "description": "List of benchmark tests for different headless CMS solutions.",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/polyfill": "^7.11.5",
+    "artillery": "^1.6.1",
+    "csvtojson": "^2.0.10",
+    "got": "11.7.0",
+    "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js --mode=development",
+    "build": "rm -f dist/bundle.js && webpack --config ./webpack.config.js --mode=production",
+    "test": "yarn build && node dist/bundle.js"
+  },
+  "author": "Webiny",
+  "license": "MIT"
+}

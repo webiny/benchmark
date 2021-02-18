@@ -1,0 +1,551 @@
+{
+	"listContentModelGroups": {
+		"data": [
+			{
+				"id": "602bbb6361abb200088032cc",
+				"name": "Ungrouped",
+				"icon": "fas/star",
+				"slug": "ungrouped",
+				"description": "A generic content model group"
+			},
+			{
+				"id": "602bbccdd1d41a0008e1dcea",
+				"name": "Order system",
+				"icon": "fas/star",
+				"slug": "order-system",
+				"description": null
+			}
+		]
+	},
+	"listContentModels": {
+		"data": [
+			{
+				"name": "Country",
+				"modelId": "country",
+				"description": null,
+				"group": {
+					"id": "602bbccdd1d41a0008e1dcea"
+				},
+				"fields": [
+					{
+						"id": "8qeHTNkRc",
+						"fieldId": "name",
+						"label": "Name",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "text",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "text-input"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							}
+						],
+						"listValidation": [],
+						"settings": {}
+					},
+					{
+						"id": "9MhWtgZ_p",
+						"fieldId": "region",
+						"label": "Region",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "ref",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "ref-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {
+							"models": [
+								{
+									"modelId": "region"
+								}
+							]
+						}
+					}
+				],
+				"layout": [
+					[
+						"8qeHTNkRc"
+					],
+					[
+						"9MhWtgZ_p"
+					]
+				],
+				"titleFieldId": "name"
+			},
+			{
+				"name": "Item type",
+				"modelId": "itemType",
+				"description": null,
+				"group": {
+					"id": "602bbccdd1d41a0008e1dcea"
+				},
+				"fields": [
+					{
+						"id": "2AW68CV6v",
+						"fieldId": "name",
+						"label": "Name",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "text",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "text-input"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							}
+						],
+						"listValidation": [],
+						"settings": {}
+					}
+				],
+				"layout": [
+					[
+						"2AW68CV6v"
+					]
+				],
+				"titleFieldId": "name"
+			},
+			{
+				"name": "Order",
+				"modelId": "order",
+				"description": null,
+				"group": {
+					"id": "602bbccdd1d41a0008e1dcea"
+				},
+				"fields": [
+					{
+						"id": "mMwQRwakg",
+						"fieldId": "orderId",
+						"label": "Order ID",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "number",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "number-input"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							},
+							{
+								"name": "gte",
+								"message": "Value is too small.",
+								"settings": {
+									"value": "0"
+								}
+							}
+						],
+						"listValidation": [],
+						"settings": {}
+					},
+					{
+						"id": "cQrU_kzjO",
+						"fieldId": "orderDate",
+						"label": "Order date",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "datetime",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "date-time-input"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							}
+						],
+						"listValidation": [],
+						"settings": {
+							"type": "date"
+						}
+					},
+					{
+						"id": "5nO4em3HT",
+						"fieldId": "shippingDate",
+						"label": "Shipping date",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "datetime",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "date-time-input"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							}
+						],
+						"listValidation": [],
+						"settings": {
+							"type": "date"
+						}
+					},
+					{
+						"id": "l-lFuFcFE",
+						"fieldId": "unitsSold",
+						"label": "Units sold",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "number",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "number-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {}
+					},
+					{
+						"id": "g3Gc3h6Uw",
+						"fieldId": "unitPrice",
+						"label": "Unit price",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "number",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "number-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {}
+					},
+					{
+						"id": "7qeFwDYDZ",
+						"fieldId": "totalPrice",
+						"label": "Total price",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "number",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "number-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {}
+					},
+					{
+						"id": "1-Dl-x0b_",
+						"fieldId": "country",
+						"label": "Country",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "ref",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "ref-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {
+							"models": [
+								{
+									"modelId": "country"
+								}
+							]
+						}
+					},
+					{
+						"id": "gwIXgG1rS",
+						"fieldId": "itemType",
+						"label": "Item type",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "ref",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "ref-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {
+							"models": [
+								{
+									"modelId": "itemType"
+								}
+							]
+						}
+					},
+					{
+						"id": "xGoOGIozo",
+						"fieldId": "salesChannel",
+						"label": "Sales channel",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "ref",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "ref-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {
+							"models": [
+								{
+									"modelId": "salesChannel"
+								}
+							]
+						}
+					},
+					{
+						"id": "CyOqywdgT",
+						"fieldId": "orderPriority",
+						"label": "Order priority",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "ref",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "ref-input"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {
+							"models": [
+								{
+									"modelId": "orderPriority"
+								}
+							]
+						}
+					}
+				],
+				"layout": [
+					[
+						"mMwQRwakg",
+						"cQrU_kzjO",
+						"5nO4em3HT"
+					],
+					[
+						"l-lFuFcFE",
+						"g3Gc3h6Uw",
+						"7qeFwDYDZ"
+					],
+					[
+						"1-Dl-x0b_",
+						"gwIXgG1rS"
+					],
+					[
+						"xGoOGIozo",
+						"CyOqywdgT"
+					]
+				],
+				"titleFieldId": "id"
+			},
+			{
+				"name": "Order priority",
+				"modelId": "orderPriority",
+				"description": null,
+				"group": {
+					"id": "602bbccdd1d41a0008e1dcea"
+				},
+				"fields": [
+					{
+						"id": "iHdHSf5HF",
+						"fieldId": "priority",
+						"label": "Priority",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "text",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": true,
+							"values": [
+								{
+									"label": "Low",
+									"value": "L"
+								},
+								{
+									"label": "Medium",
+									"value": "M"
+								},
+								{
+									"label": "High",
+									"value": "H"
+								},
+								{
+									"label": "Custom",
+									"value": "C"
+								}
+							]
+						},
+						"renderer": {
+							"name": "radio-buttons"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							}
+						],
+						"listValidation": [],
+						"settings": {}
+					}
+				],
+				"layout": [
+					[
+						"iHdHSf5HF"
+					]
+				],
+				"titleFieldId": "priority"
+			},
+			{
+				"name": "Region",
+				"modelId": "region",
+				"description": null,
+				"group": {
+					"id": "602bbccdd1d41a0008e1dcea"
+				},
+				"fields": [
+					{
+						"id": "IyreNt9V5",
+						"fieldId": "name",
+						"label": "Name",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "text",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": false,
+							"values": []
+						},
+						"renderer": {
+							"name": "text-input"
+						},
+						"validation": [
+							{
+								"name": "required",
+								"message": "Value is required.",
+								"settings": {}
+							}
+						],
+						"listValidation": [],
+						"settings": {}
+					}
+				],
+				"layout": [
+					[
+						"IyreNt9V5"
+					]
+				],
+				"titleFieldId": "name"
+			},
+			{
+				"name": "Sales channel",
+				"modelId": "salesChannel",
+				"description": null,
+				"group": {
+					"id": "602bbccdd1d41a0008e1dcea"
+				},
+				"fields": [
+					{
+						"id": "qTQ92wX49",
+						"fieldId": "type",
+						"label": "Type",
+						"helpText": null,
+						"placeholderText": null,
+						"type": "text",
+						"multipleValues": false,
+						"predefinedValues": {
+							"enabled": true,
+							"values": [
+								{
+									"label": "Online",
+									"value": "online"
+								},
+								{
+									"label": "Offline",
+									"value": "offline"
+								}
+							]
+						},
+						"renderer": {
+							"name": "radio-buttons"
+						},
+						"validation": [],
+						"listValidation": [],
+						"settings": {}
+					}
+				],
+				"layout": [
+					[
+						"qTQ92wX49"
+					]
+				],
+				"titleFieldId": "type"
+			}
+		]
+	}
+}

@@ -1,0 +1,74 @@
+{
+    listRegions(where:{name:"Australia"}){
+        data{
+            id
+            name
+        }
+    }
+}
+
+
+mutation{
+  createRegion(data: {
+    name: "Test Sven"
+  }) { 
+    data{
+      id
+    }
+    error{
+      message
+    }
+  }
+}
+
+----
+
+/regions/istria/croatia
+
+
+----
+/regions/{name}/{country}
+----
+
+
+---
+
+{
+    listRegions(where:{name:"{name:default value}", color: "{country: default value}"}){
+        data{
+            id
+            name
+        }
+    }
+}
+-----
+
+{
+  listOrders{
+    data{
+      orderId,
+      orderPriority{
+        priority
+      }
+      shippingDate
+      unitsSold
+      unitPrice
+      totalPrice
+      country{
+        name
+        region{
+          name
+        }
+      }
+      itemType{
+        name
+      }
+      salesChannel{
+        type
+      }
+      orderPriority{
+        priority
+      }
+    }
+  }
+}

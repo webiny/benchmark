@@ -1,0 +1,95 @@
+{
+  "aggregate": {
+    "timestamp": "2021-02-21T09:04:41.254Z",
+    "scenariosCreated": 10,
+    "scenariosCompleted": 10,
+    "requestsCompleted": 10,
+    "latency": {
+      "min": 409,
+      "max": 628.8,
+      "median": 511.7,
+      "p95": 628.8,
+      "p99": 628.8
+    },
+    "rps": {
+      "count": 10,
+      "mean": 4.39
+    },
+    "scenarioDuration": {
+      "min": 412.8,
+      "max": 633.3,
+      "median": 515.7,
+      "p95": 633.3,
+      "p99": 633.3
+    },
+    "scenarioCounts": {
+      "0": 10
+    },
+    "errors": {},
+    "codes": {
+      "200": 10
+    },
+    "matches": 0,
+    "customStats": {},
+    "counters": {},
+    "scenariosAvoided": 0,
+    "phases": [
+      {
+        "duration": 2,
+        "arrivalRate": 5,
+        "name": "Warm up the application"
+      }
+    ]
+  },
+  "intermediate": [
+    {
+      "timestamp": "2021-02-21T09:04:41.252Z",
+      "scenariosCreated": 10,
+      "scenariosCompleted": 10,
+      "requestsCompleted": 10,
+      "latency": {
+        "min": 409,
+        "max": 628.8,
+        "median": 511.7,
+        "p95": 628.8,
+        "p99": 628.8
+      },
+      "rps": {
+        "count": 10,
+        "mean": 4.39
+      },
+      "scenarioDuration": {
+        "min": 412.8,
+        "max": 633.3,
+        "median": 515.7,
+        "p95": 633.3,
+        "p99": 633.3
+      },
+      "scenarioCounts": {
+        "0": 10
+      },
+      "errors": {},
+      "codes": {
+        "200": 10
+      },
+      "matches": 0,
+      "latencies": [
+        547927641,
+        428349554,
+        435138935,
+        628782776,
+        521713162,
+        588047331,
+        506746756,
+        516566661,
+        408983461,
+        466153129
+      ],
+      "customStats": {},
+      "counters": {},
+      "concurrency": 0,
+      "pendingRequests": 0,
+      "scenariosAvoided": 0
+    }
+  ]
+}

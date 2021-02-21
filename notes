@@ -1,74 +1,9 @@
-{
-    listRegions(where:{name:"Australia"}){
-        data{
-            id
-            name
-        }
-    }
-}
+To setup the benchmark:
 
-
-mutation{
-  createRegion(data: {
-    name: "Test Sven"
-  }) { 
-    data{
-      id
-    }
-    error{
-      message
-    }
-  }
-}
-
-----
-
-/regions/istria/croatia
-
-
-----
-/regions/{name}/{country}
-----
-
-
----
-
-{
-    listRegions(where:{name:"{name:default value}", color: "{country: default value}"}){
-        data{
-            id
-            name
-        }
-    }
-}
------
-
-{
-  listOrders{
-    data{
-      orderId,
-      orderPriority{
-        priority
-      }
-      shippingDate
-      unitsSold
-      unitPrice
-      totalPrice
-      country{
-        name
-        region{
-          name
-        }
-      }
-      itemType{
-        name
-      }
-      salesChannel{
-        type
-      }
-      orderPriority{
-        priority
-      }
-    }
-  }
-}
+1. clone this repo
+2. delete all the existing files from the tmp folder
+3. update config.js
+4. import data-models-and-groups.json using the headless cms import script
+5. run `yarn test --prepare`
+6. install and run jmeter 
+7. open the 'benchmarks/webiny-benchmark.jmx' in jmeter and run the test

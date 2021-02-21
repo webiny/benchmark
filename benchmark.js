@@ -84,6 +84,14 @@ class Benchmark {
       }
       entry['Order Priority'] = this.orderPriorities[entry['Order Priority']];
 
+      // cast other types to right format
+      entry['Order Date'] = new Date(entry['Order Date'])
+        .toISOString()
+        .substr(0, 10);
+      entry['Ship Date'] = new Date(entry['Ship Date'])
+        .toISOString()
+        .substr(0, 10);
+
       // write the full line into the test set
       testSetStream.write('\n' + this._entryToCSV(entry));
 
@@ -107,12 +115,8 @@ class Benchmark {
         createOrder(data: 
           {
             orderId: ${entry['Order ID']},
-            orderDate: "${new Date(entry['Order Date'])
-              .toISOString()
-              .substr(0, 10)}",
-            shippingDate: "${new Date(entry['Ship Date'])
-              .toISOString()
-              .substr(0, 10)}",
+            orderDate: "${entry['Order Date']}",
+            shippingDate: "${entry['Ship Date']}",
             unitsSold: ${entry['Units Sold']},
             unitPrice: ${entry['Unit Price']},
             totalPrice: ${entry['Total Revenue']},

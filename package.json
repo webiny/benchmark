@@ -7,7 +7,6 @@
     "@babel/cli": "^7.11.6",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/polyfill": "^7.11.5",
-    "artillery": "^1.6.1",
     "csvtojson": "^2.0.10",
     "got": "11.7.0",
     "graphql": "^15.5.0",
@@ -24,10 +23,9 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode=development",
     "build": "rm -f dist/bundle.js && webpack --config ./webpack.config.js --mode=production",
-    "test": "yarn build && node dist/bundle.js",
-    "benchmark-order-insert": "DEBUG=http yarn artillery run benchmarks/insert-orders.yaml",
-    "benchmark-filter-countries": "DEBUG=http yarn artillery run --output filter-countries-report.json benchmarks/filter-countries.yaml",
-    "benchmark-filter-orders": "DEBUG=http:response yarn artillery run --output filter-orders-report.json benchmarks/filter-orders.yaml"
+    "prepare": "yarn build && node dist/bundle.js",
+    "benchmark": "HEAP=\"-Xms512m -Xmx8192m\" ../apache-jmeter-5.4.1/bin/jmeter.sh -n -t ./benchmarks/webiny-benchmark.jmx",
+    "benchmark-report": "HEAP=\"-Xms512m -Xmx8192m\" ../apache-jmeter-5.4.1/bin/jmeter.sh -n -t ./benchmarks/webiny-benchmark.jmx -l ./tmp/results.log -e -o ./tmp/report"
   },
   "author": "Webiny",
   "license": "MIT"

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './benchmark.js',
+  entry: './prepare.js',
   target: 'node',
   output: {
     libraryTarget: 'commonjs',

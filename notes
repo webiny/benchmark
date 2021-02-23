@@ -1,9 +1,0 @@
-To setup the benchmark:
-
-1. clone this repo
-2. delete all the existing files from the tmp folder
-3. update config.js
-4. import data-models-and-groups.json using the headless cms import script
-5. run `yarn test --prepare`
-6. install and run jmeter 
-7. open the 'benchmarks/webiny-benchmark.jmx' in jmeter and run the test

@@ -9,7 +9,7 @@ Also, the goal of this test is not to fund bugs, but to demonstrate Webiny's spe
 **In case you wish to replicate this test, a notice regarding cost:**
 For a new AWS user all of the AWS services are included as part of the free tier, however, due to the scale of this benchmark, as we're inserting and then reading more than 1M records, some of the services will go over the AWS free tier limits.
 
-Finally to mention, this is the **default setup** we're testing here. In case additional scale and performance is needed, that can be achieved by simply adjusting the infrastructure configuration templates and upgrading some of the resources to a higher memory or cpu options.
+Finally to mention, this is the **default setup** we're testing here. In case additional scale and performance is needed, that can be achieved by simply adjusting the infrastructure configuration templates and upgrading some of the resources to a higher memory or CPU options.
 
 ### Benchmark 1: Page Builder - page delivery
 
@@ -66,8 +66,6 @@ Note: In case you need to run `yarn prepare` multiple times, make sure you empty
 
 1. Amend the `benchmarks/hc-write-data.jmx` and populate the user variables
 2. Run the test `HEAP="-Xms512m -Xmx4096m" ./_PATH_TO_JMETER_/bin/jmeter.sh -n -t ./hc-write-data.jmx -l ./results.log -e -o ./report`
-
-In case of Webiny we first let this test run until we had 1M records inside the `Order` content model, and only then started the benchmark where we measured the results.
 
 ### Benchmark 3: Headless CMS - Different read operations that are performed on 1 million records using the Read API
 

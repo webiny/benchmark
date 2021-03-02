@@ -1,0 +1,34 @@
+{
+  "GraphQL HTTP Request" : {
+    "transaction" : "GraphQL HTTP Request",
+    "sampleCount" : 1402424,
+    "errorCount" : 115,
+    "errorPct" : 0.008200088,
+    "meanResTime" : 449.171719822245,
+    "medianResTime" : 470.0,
+    "minResTime" : 188.0,
+    "maxResTime" : 5570.0,
+    "pct1ResTime" : 552.0,
+    "pct2ResTime" : 587.0,
+    "pct3ResTime" : 675.0,
+    "throughput" : 2123.353460231712,
+    "receivedKBytesPerSec" : 4815.840942448609,
+    "sentKBytesPerSec" : 1219.2693697424281
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 1402424,
+    "errorCount" : 115,
+    "errorPct" : 0.008200088,
+    "meanResTime" : 449.171719822245,
+    "medianResTime" : 470.0,
+    "minResTime" : 188.0,
+    "maxResTime" : 5570.0,
+    "pct1ResTime" : 552.0,
+    "pct2ResTime" : 587.0,
+    "pct3ResTime" : 675.0,
+    "throughput" : 2123.353460231712,
+    "receivedKBytesPerSec" : 4815.840942448609,
+    "sentKBytesPerSec" : 1219.2693697424281
+  }
+}

@@ -90,7 +90,7 @@
 
 "use strict";
 
-var es5 = __webpack_require__(5);
+var es5 = __webpack_require__(4);
 var canEvaluate = typeof navigator == "undefined";
 
 var errorObj = {e: {}};
@@ -498,7 +498,7 @@ ret.isRecentNode = ret.isNode && (function() {
 ret.nodeSupportsAsyncResource = ret.isNode && (function() {
     var supportsAsync = false;
     try {
-        var res = __webpack_require__(25).AsyncResource;
+        var res = __webpack_require__(24).AsyncResource;
         supportsAsync = typeof res.prototype.runInAsyncScope === "function";
     } catch (e) {
         supportsAsync = false;
@@ -524,7 +524,7 @@ module.exports = require("stream");
 
 "use strict";
 
-var es5 = __webpack_require__(5);
+var es5 = __webpack_require__(4);
 var Objectfreeze = es5.freeze;
 var util = __webpack_require__(0);
 var inherits = util.inherits;
@@ -643,6 +643,98 @@ module.exports = {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("zlib");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+var isES5 = (function(){
+    "use strict";
+    return this === undefined;
+})();
+
+if (isES5) {
+    module.exports = {
+        freeze: Object.freeze,
+        defineProperty: Object.defineProperty,
+        getDescriptor: Object.getOwnPropertyDescriptor,
+        keys: Object.keys,
+        names: Object.getOwnPropertyNames,
+        getPrototypeOf: Object.getPrototypeOf,
+        isArray: Array.isArray,
+        isES5: isES5,
+        propertyIsWritable: function(obj, prop) {
+            var descriptor = Object.getOwnPropertyDescriptor(obj, prop);
+            return !!(!descriptor || descriptor.writable || descriptor.set);
+        }
+    };
+} else {
+    var has = {}.hasOwnProperty;
+    var str = {}.toString;
+    var proto = {}.constructor.prototype;
+
+    var ObjectKeys = function (o) {
+        var ret = [];
+        for (var key in o) {
+            if (has.call(o, key)) {
+                ret.push(key);
+            }
+        }
+        return ret;
+    };
+
+    var ObjectGetDescriptor = function(o, key) {
+        return {value: o[key]};
+    };
+
+    var ObjectDefineProperty = function (o, key, desc) {
+        o[key] = desc.value;
+        return o;
+    };
+
+    var ObjectFreeze = function (obj) {
+        return obj;
+    };
+
+    var ObjectGetPrototypeOf = function (obj) {
+        try {
+            return Object(obj).constructor.prototype;
+        }
+        catch (e) {
+            return proto;
+        }
+    };
+
+    var ArrayIsArray = function (obj) {
+        try {
+            return str.call(obj) === "[object Array]";
+        }
+        catch(e) {
+            return false;
+        }
+    };
+
+    module.exports = {
+        isArray: ArrayIsArray,
+        keys: ObjectKeys,
+        names: ObjectKeys,
+        defineProperty: ObjectDefineProperty,
+        getDescriptor: ObjectGetDescriptor,
+        freeze: ObjectFreeze,
+        getPrototypeOf: ObjectGetPrototypeOf,
+        isES5: isES5,
+        propertyIsWritable: function() {
+            return true;
+        }
+    };
+}
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -732,8 +824,8 @@ exports.gql = exports.request = exports.rawRequest = exports.GraphQLClient = exp
 var cross_fetch_1 = __importStar(__webpack_require__(129)), CrossFetch = cross_fetch_1;
 var printer_1 = __webpack_require__(144);
 var createRequestBody_1 = __importDefault(__webpack_require__(131));
-var types_1 = __webpack_require__(40);
-var types_2 = __webpack_require__(40);
+var types_1 = __webpack_require__(39);
+var types_2 = __webpack_require__(39);
 Object.defineProperty(exports, "ClientError", { enumerable: true, get: function () { return types_2.ClientError; } });
 /**
  * Convert the given headers configuration into a plain object.
@@ -957,98 +1049,6 @@ function HeadersInstanceToPlainObject(headers) {
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("zlib");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-var isES5 = (function(){
-    "use strict";
-    return this === undefined;
-})();
-
-if (isES5) {
-    module.exports = {
-        freeze: Object.freeze,
-        defineProperty: Object.defineProperty,
-        getDescriptor: Object.getOwnPropertyDescriptor,
-        keys: Object.keys,
-        names: Object.getOwnPropertyNames,
-        getPrototypeOf: Object.getPrototypeOf,
-        isArray: Array.isArray,
-        isES5: isES5,
-        propertyIsWritable: function(obj, prop) {
-            var descriptor = Object.getOwnPropertyDescriptor(obj, prop);
-            return !!(!descriptor || descriptor.writable || descriptor.set);
-        }
-    };
-} else {
-    var has = {}.hasOwnProperty;
-    var str = {}.toString;
-    var proto = {}.constructor.prototype;
-
-    var ObjectKeys = function (o) {
-        var ret = [];
-        for (var key in o) {
-            if (has.call(o, key)) {
-                ret.push(key);
-            }
-        }
-        return ret;
-    };
-
-    var ObjectGetDescriptor = function(o, key) {
-        return {value: o[key]};
-    };
-
-    var ObjectDefineProperty = function (o, key, desc) {
-        o[key] = desc.value;
-        return o;
-    };
-
-    var ObjectFreeze = function (obj) {
-        return obj;
-    };
-
-    var ObjectGetPrototypeOf = function (obj) {
-        try {
-            return Object(obj).constructor.prototype;
-        }
-        catch (e) {
-            return proto;
-        }
-    };
-
-    var ArrayIsArray = function (obj) {
-        try {
-            return str.call(obj) === "[object Array]";
-        }
-        catch(e) {
-            return false;
-        }
-    };
-
-    module.exports = {
-        isArray: ArrayIsArray,
-        keys: ObjectKeys,
-        names: ObjectKeys,
-        defineProperty: ObjectDefineProperty,
-        getDescriptor: ObjectGetDescriptor,
-        freeze: ObjectFreeze,
-        getPrototypeOf: ObjectGetPrototypeOf,
-        isES5: isES5,
-        propertyIsWritable: function() {
-            return true;
-        }
-    };
-}
-
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
@@ -1070,7 +1070,7 @@ module.exports = nativeCreate;
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(31);
+var eq = __webpack_require__(30);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -1303,7 +1303,7 @@ module.exports = isArray;
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(30),
+var baseGetTag = __webpack_require__(29),
     isObjectLike = __webpack_require__(98);
 
 /** `Object#toString` result references. */
@@ -1383,34 +1383,19 @@ module.exports = require("https");
 
 /***/ }),
 /* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var Converter_1 = __webpack_require__(41);
-var helper = function (param, options) {
-    return new Converter_1.Converter(param, options);
-};
-helper["csv"] = helper;
-helper["Converter"] = Converter_1.Converter;
-module.exports = helper;
-//# sourceMappingURL=index.js.map
-
-/***/ }),
-/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("async_hooks");
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 module.exports = function(NEXT_FILTER) {
 var util = __webpack_require__(0);
-var getKeys = __webpack_require__(5).keys;
+var getKeys = __webpack_require__(4).keys;
 var tryCatch = util.tryCatch;
 var errorObj = util.errorObj;
 
@@ -1452,7 +1437,7 @@ return catchFilter;
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1461,7 +1446,7 @@ var util = __webpack_require__(0);
 var maybeWrapAsError = util.maybeWrapAsError;
 var errors = __webpack_require__(2);
 var OperationalError = errors.OperationalError;
-var es5 = __webpack_require__(5);
+var es5 = __webpack_require__(4);
 
 function isUntypedError(obj) {
     return obj instanceof Error &&
@@ -1510,7 +1495,7 @@ module.exports = nodebackForPromise;
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1555,7 +1540,7 @@ exports.trimRight = String.prototype.trimRight ? function trimRightNative(str) {
 //# sourceMappingURL=util.js.map
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1603,7 +1588,7 @@ exports.default = CSVError;
 //# sourceMappingURL=CSVError.js.map
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(15),
@@ -1637,7 +1622,7 @@ module.exports = baseGetTag;
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports) {
 
 /**
@@ -1680,7 +1665,7 @@ module.exports = eq;
 
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1741,17 +1726,17 @@ module.exports = function extractFiles(value, path, isExtractableFile) {
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var async = __webpack_require__(35)
-  , abort = __webpack_require__(36)
+var async = __webpack_require__(34)
+  , abort = __webpack_require__(35)
   ;
 
 // API
@@ -1828,7 +1813,7 @@ function runJob(iterator, key, item, callback)
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defer = __webpack_require__(141);
@@ -1868,7 +1853,7 @@ function async(callback)
 
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports) {
 
 // API
@@ -1903,7 +1888,7 @@ function clean(key)
 
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports) {
 
 // API
@@ -1946,11 +1931,11 @@ function state(list, sortMethod)
 
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var abort = __webpack_require__(36)
-  , async = __webpack_require__(35)
+var abort = __webpack_require__(35)
+  , async = __webpack_require__(34)
   ;
 
 // API
@@ -1981,12 +1966,12 @@ function terminator(callback)
 
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var iterate    = __webpack_require__(34)
-  , initState  = __webpack_require__(37)
-  , terminator = __webpack_require__(38)
+var iterate    = __webpack_require__(33)
+  , initState  = __webpack_require__(36)
+  , terminator = __webpack_require__(37)
   ;
 
 // Public API
@@ -2062,7 +2047,7 @@ function descending(a, b)
 
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2112,6 +2097,21 @@ var ClientError = /** @class */ (function (_super) {
 }(Error));
 exports.ClientError = ClientError;
 //# sourceMappingURL=types.js.map
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Converter_1 = __webpack_require__(41);
+var helper = function (param, options) {
+    return new Converter_1.Converter(param, options);
+};
+helper["csv"] = helper;
+helper["Converter"] = Converter_1.Converter;
+module.exports = helper;
+//# sourceMappingURL=index.js.map
 
 /***/ }),
 /* 41 */
@@ -2437,7 +2437,7 @@ var getContextDomain = function() {
     };
 };
 var AsyncResource = util.isNode && util.nodeSupportsAsyncResource ?
-    __webpack_require__(25).AsyncResource : null;
+    __webpack_require__(24).AsyncResource : null;
 var getContextAsyncHooks = function() {
     return {
         domain: getDomain(),
@@ -2455,7 +2455,7 @@ var disableAsyncHooks = function() {
     util.notEnumerableProp(Promise, "_getContext", getContextDomain);
 };
 
-var es5 = __webpack_require__(5);
+var es5 = __webpack_require__(4);
 var Async = __webpack_require__(45);
 var async = new Async();
 es5.defineProperty(Promise, "_async", {value: async});
@@ -2483,8 +2483,8 @@ var debug = __webpack_require__(51)(Promise, Context,
 var CapturedTrace = debug.CapturedTrace;
 var PassThroughHandlerContext =
     __webpack_require__(52)(Promise, tryConvertToPromise, NEXT_FILTER);
-var catchFilter = __webpack_require__(26)(NEXT_FILTER);
-var nodebackForPromise = __webpack_require__(27);
+var catchFilter = __webpack_require__(25)(NEXT_FILTER);
+var nodebackForPromise = __webpack_require__(26);
 var errorObj = util.errorObj;
 var tryCatch = util.tryCatch;
 function check(self, executor) {
@@ -3874,7 +3874,7 @@ module.exports = function(Promise, Context,
 var async = Promise._async;
 var Warning = __webpack_require__(2).Warning;
 var util = __webpack_require__(0);
-var es5 = __webpack_require__(5);
+var es5 = __webpack_require__(4);
 var canAttachTrace = util.canAttachTrace;
 var unhandledRejectionHandled;
 var possiblyUnhandledRejection;
@@ -4889,7 +4889,7 @@ module.exports = function(Promise, tryConvertToPromise, NEXT_FILTER) {
 var util = __webpack_require__(0);
 var CancellationError = Promise.CancellationError;
 var errorObj = util.errorObj;
-var catchFilter = __webpack_require__(26)(NEXT_FILTER);
+var catchFilter = __webpack_require__(25)(NEXT_FILTER);
 
 function PassThroughHandlerContext(promise, type, handler) {
     this.promise = promise;
@@ -6255,7 +6255,7 @@ Promise.prototype.asCallback = Promise.prototype.nodeify = function (nodeback,
 module.exports = function(Promise, INTERNAL) {
 var THIS = {};
 var util = __webpack_require__(0);
-var nodebackForPromise = __webpack_require__(27);
+var nodebackForPromise = __webpack_require__(26);
 var withAppended = util.withAppended;
 var maybeWrapAsError = util.maybeWrapAsError;
 var canEvaluate = util.canEvaluate;
@@ -6577,7 +6577,7 @@ module.exports = function(
     Promise, PromiseArray, tryConvertToPromise, apiRejection) {
 var util = __webpack_require__(0);
 var isObject = util.isObject;
-var es5 = __webpack_require__(5);
+var es5 = __webpack_require__(4);
 var Es6Map;
 if (typeof Map === "function") Es6Map = Map;
 
@@ -7589,10 +7589,10 @@ var bluebird_1 = __importDefault(__webpack_require__(12));
 var dataClean_1 = __webpack_require__(76);
 var getEol_1 = __importDefault(__webpack_require__(13));
 var fileline_1 = __webpack_require__(79);
-var util_1 = __webpack_require__(28);
+var util_1 = __webpack_require__(27);
 var rowSplit_1 = __webpack_require__(80);
 var lineToJson_1 = __importDefault(__webpack_require__(81));
-var CSVError_1 = __importDefault(__webpack_require__(29));
+var CSVError_1 = __importDefault(__webpack_require__(28));
 var ProcessorLocal = /** @class */ (function (_super) {
     __extends(ProcessorLocal, _super);
     function ProcessorLocal() {
@@ -8121,7 +8121,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var getEol_1 = __importDefault(__webpack_require__(13));
-var util_1 = __webpack_require__(28);
+var util_1 = __webpack_require__(27);
 var defaulDelimiters = [",", "|", "\t", ";", ":"];
 var RowSplit = /** @class */ (function () {
     function RowSplit(conv) {
@@ -8356,7 +8356,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var CSVError_1 = __importDefault(__webpack_require__(29));
+var CSVError_1 = __importDefault(__webpack_require__(28));
 var set_1 = __importDefault(__webpack_require__(82));
 var numReg = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
 function default_1(csvRows, conv) {
@@ -8667,7 +8667,7 @@ module.exports = baseSet;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseAssignValue = __webpack_require__(85),
-    eq = __webpack_require__(31);
+    eq = __webpack_require__(30);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -8801,7 +8801,7 @@ module.exports = baseIsNative;
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(30),
+var baseGetTag = __webpack_require__(29),
     isObject = __webpack_require__(17);
 
 /** `Object#toString` result references. */
@@ -10186,7 +10186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
 /* harmony import */ var url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
 /* harmony import */ var https__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(23);
-/* harmony import */ var zlib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4);
+/* harmony import */ var zlib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
 
 
 
@@ -11883,7 +11883,7 @@ exports.default = createRequestBody;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ReactNativeFile_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(20);
 /* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "ReactNativeFile", function() { return _ReactNativeFile_js__WEBPACK_IMPORTED_MODULE_0__; });
-/* harmony import */ var _extractFiles_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(32);
+/* harmony import */ var _extractFiles_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(31);
 /* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "extractFiles", function() { return _extractFiles_js__WEBPACK_IMPORTED_MODULE_1__; });
 /* harmony import */ var _isExtractableFile_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(21);
 /* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "isExtractableFile", function() { return _isExtractableFile_js__WEBPACK_IMPORTED_MODULE_2__; });
@@ -11898,7 +11898,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var CombinedStream = __webpack_require__(134);
 var util = __webpack_require__(22);
-var path = __webpack_require__(33);
+var path = __webpack_require__(32);
 var http = __webpack_require__(10);
 var https = __webpack_require__(23);
 var parseUrl = __webpack_require__(6).parse;
@@ -12739,7 +12739,7 @@ DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
  */
 
 var db = __webpack_require__(137)
-var extname = __webpack_require__(33).extname
+var extname = __webpack_require__(32).extname
 
 /**
  * Module variables.
@@ -12945,7 +12945,7 @@ module.exports =
 {
   parallel      : __webpack_require__(140),
   serial        : __webpack_require__(142),
-  serialOrdered : __webpack_require__(39)
+  serialOrdered : __webpack_require__(38)
 };
 
 
@@ -12953,9 +12953,9 @@ module.exports =
 /* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var iterate    = __webpack_require__(34)
-  , initState  = __webpack_require__(37)
-  , terminator = __webpack_require__(38)
+var iterate    = __webpack_require__(33)
+  , initState  = __webpack_require__(36)
+  , terminator = __webpack_require__(37)
   ;
 
 // Public API
@@ -13034,7 +13034,7 @@ function defer(fn)
 /* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var serialOrdered = __webpack_require__(39);
+var serialOrdered = __webpack_require__(38);
 
 // Public API
 module.exports = serial;
@@ -14193,22 +14193,22 @@ function hasMultilineItems(maybeArray) {
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./node_modules/csvtojson/v2/index.js
-var v2 = __webpack_require__(24);
+var v2 = __webpack_require__(40);
 var v2_default = /*#__PURE__*/__webpack_require__.n(v2);
 
 // EXTERNAL MODULE: ./node_modules/graphql-request/dist/index.js
-var dist = __webpack_require__(3);
+var dist = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./config.js
 /* harmony default export */ var config = ({
   debug: true,
-  dataSet: './test-data-set/100-sales-records.csv',
+  dataSet: './test-data-set/100000-sales-records.csv',
   webiny: {
-    authToken: 'a8043dc77ef4607bf594ed186cc7dfc7a1901e321186cec4',
-    manageApi: 'https://dj8fuebnckdnl.cloudfront.net/cms/manage/en-US'
+    authToken: 'a4bc495c7d0e1b05478a6f93da5fa0fff53bb2bb666ba371',
+    manageApi: 'https://de8l4ftc1kjvf.cloudfront.net/cms/manage/en-US'
   }
 });
-// CONCATENATED MODULE: ./benchmark.js
+// CONCATENATED MODULE: ./prepare.js
 const fs = __webpack_require__(11);
 
  //import {gqlInsert, gql} from './lib/gql-helper';
@@ -14223,9 +14223,8 @@ yarn prepare: it should
 For insert main record test we should use armory
  */
 
-class benchmark_Benchmark {
-  constructor(cms) {
-    this.cms = cms;
+class prepare_PrepareBenchmark {
+  constructor() {
     this.countries = {};
     this.itemTypes = {};
     this.orderPriorities = {};
@@ -14302,59 +14301,6 @@ class benchmark_Benchmark {
 
     testSetStream.end();
     console.log('PREPARE OPERATION FINISHED');
-  }
-
-  async runBenchmark(records) {
-    let i = 1;
-
-    for (const entry of records) {
-      console.log('Importing order: ' + i);
-      const mutation = dist["gql"]`
-      mutation {
-        createOrder(data: 
-          {
-            orderId: ${entry['Order ID']},
-            orderDate: "${entry['Order Date']}",
-            shippingDate: "${entry['Ship Date']}",
-            unitsSold: ${entry['Units Sold']},
-            unitPrice: ${entry['Unit Price']},
-            totalPrice: ${entry['Total Revenue']},
-            country: {
-              modelId: "country",
-              entryId: "${entry['Country']}"
-            },
-            itemType: {
-              modelId: "itemType",
-              entryId: "${entry['Item Type']}"
-            },
-            salesChannel: {
-              modelId: "salesChannel",
-              entryId: "${entry['Sales Channel']}"
-            },
-            orderPriority: {
-              modelId: "orderPriority",
-              entryId: "${entry['Order Priority']}"
-            },
-          }) {
-          data {
-            id
-          }
-          error {
-            message
-          }
-        }
-      }
-    `;
-
-      try {
-        const result = await this._gqlRequest(mutation);
-        console.log('Imported order ' + i + ' successfully');
-        i++;
-      } catch (error) {
-        console.log(error);
-        process.exit();
-      }
-    }
   }
 
   async importCountry(countryName, regionId) {
@@ -14550,29 +14496,10 @@ class benchmark_Benchmark {
 }
 
 (async () => {
-  if (process.argv.indexOf('--prepare') < 1 && process.argv.indexOf('--benchmark') < 1) {
-    console.log('You need to pass either --prepare or --benchmark arguments');
-    process.exit();
-  } // benchmark
-
-
-  const b = new benchmark_Benchmark('webiny');
-
-  if (process.argv.indexOf('--prepare') > 0) {
-    // extract the records from the csv
-    const records = await v2_default.a.csv().fromFile(config.dataSet);
-    await b.prepareData(records);
-  } else if (process.argv.indexOf('--benchmark') > 0) {
-    const preparedRecordsFile = './tmp/prepared-records.csv'; // extract the prepared records from the csv
-
-    if (!fs.existsSync(preparedRecordsFile)) {
-      console.log('Before you can run the benchmark you need to run the prepare operation.');
-      process.exit();
-    }
-
-    const records = await v2_default.a.csv().fromFile(preparedRecordsFile);
-    await b.runBenchmark(records);
-  }
+  // prepare
+  const pb = new prepare_PrepareBenchmark();
+  const records = await v2_default.a.csv().fromFile(config.dataSet);
+  await pb.prepareData(records);
 })();
 
 /***/ })

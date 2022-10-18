@@ -22,9 +22,10 @@ The page that's used for the test is the default homepage that gets shipped with
 1. Have a Webiny instance running
 2. Clone this repo
 3. Have JMeter installed
-4. Amend the `benchmarks/pb-page-delivery.jmx` and set the `WEBINY_WEBSITE_URL` user variable to match your Public website: Website URL value.
+5. Have [JMeter Plugins Manager](https://jmeter-plugins.org/install/Install/) installed, or manually install the required plugins
+5. Amend the `benchmarks/pb-page-delivery.jmx` and set the `WEBINY_WEBSITE_URL` user variable to match your Public website: Website URL value.
    **Note**: don't add the protocol, just the domain name, example: "xxxxxxx.cloudfront.net"
-5. Run the test `HEAP="-Xms512m -Xmx4096m" ./_PATH_TO_JMETER_/bin/jmeter.sh -n -t ./pb-page-delivery.jmx -l ./results.log -e -o ./report`
+6. Run the test `HEAP="-Xms512m -Xmx4096m" ./_PATH_TO_JMETER_/bin/jmeter.sh -n -t ./pb-page-delivery.jmx -l ./results.log -e -o ./report`
 
 We recommend running the test from within the same AWS region using a more powerful instance, like `c5.2xlarge` as depending on your hardware you might not be able to generate the required load for the test.
 

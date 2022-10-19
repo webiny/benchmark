@@ -113,7 +113,7 @@ class PrepareBenchmark {
             name: "${countryName}",
             region: {
               modelId: "region",
-              entryId: "${regionId}"
+              id: "${regionId}"
             }
           }) {
           data {
@@ -220,7 +220,7 @@ class PrepareBenchmark {
     const saleChannelNameEnum = saleChannelName.toLowerCase();
     const mutation = gql`
       mutation {
-        createSalesChannel(data: {type: "${saleChannelNameEnum}"}) {
+        createSalesChannel(data: {onOrOffline: "${saleChannelNameEnum}"}) {
           data {
             id
           }

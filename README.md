@@ -22,11 +22,12 @@ The page that's used for the test is the default homepage that gets shipped with
 1. Have a Webiny instance running
 2. Clone this repo
 3. Have JMeter installed
-5. Have [JMeter Plugins Manager](https://jmeter-plugins.org/install/Install/) installed, or manually install the required plugins
-5. Amend the `benchmarks/pb-page-delivery.jmx` and set the `WEBINY_WEBSITE_URL` user variable to match your Public website: Website URL value
-6. Create a CloudWatch dashboard using the `cloudwatch-dashboard.json` file in this repo and update the resources to point to those used by your Webiny instance
+4. Have [JMeter Plugins Manager](https://jmeter-plugins.org/install/Install/) installed, or manually install the required plugins
+5. Modify `PATH_TO_JMETER/bin/user.properties` so that it reports at a granularity of 1 second (instead of the default 1 minute) by changing `jmeter.reportgenerator.overall_granularity=60000` to `jmeter.reportgenerator.overall_granularity=10000`
+6. Amend the `benchmarks/pb-page-delivery.jmx` and set the `WEBINY_WEBSITE_URL` user variable to match your Public website: Website URL value
+7. Create a CloudWatch dashboard using the `cloudwatch-dashboard.json` file in this repo and update the resources to point to those used by your Webiny instance
    **Note**: don't add the protocol, just the domain name, example: "xxxxxxx.cloudfront.net"
-6. Run the test `HEAP="-Xms512m -Xmx4096m" ./_PATH_TO_JMETER_/bin/jmeter.sh -n -t ./pb-page-delivery.jmx -l ./results.log -e -o ./report`
+8. Run the test `HEAP="-Xms512m -Xmx4096m" ./_PATH_TO_JMETER_/bin/jmeter.sh -n -t ./pb-page-delivery.jmx -l ./results.log -e -o ./report`
 
 We recommend running the test from within the same AWS region using a more powerful instance, like `c5.2xlarge` as depending on your hardware you might not be able to generate the required load for the test.
 

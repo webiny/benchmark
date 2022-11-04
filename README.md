@@ -23,7 +23,8 @@ The page that's used for the test is the default homepage that gets shipped with
 2. Clone this repo
 3. Have JMeter installed
 5. Have [JMeter Plugins Manager](https://jmeter-plugins.org/install/Install/) installed, or manually install the required plugins
-5. Amend the `benchmarks/pb-page-delivery.jmx` and set the `WEBINY_WEBSITE_URL` user variable to match your Public website: Website URL value.
+5. Amend the `benchmarks/pb-page-delivery.jmx` and set the `WEBINY_WEBSITE_URL` user variable to match your Public website: Website URL value
+6. Create a CloudWatch dashboard using the `cloudwatch-dashboard.json` file in this repo and update the resources to point to those used by your Webiny instance
    **Note**: don't add the protocol, just the domain name, example: "xxxxxxx.cloudfront.net"
 6. Run the test `HEAP="-Xms512m -Xmx4096m" ./_PATH_TO_JMETER_/bin/jmeter.sh -n -t ./pb-page-delivery.jmx -l ./results.log -e -o ./report`
 

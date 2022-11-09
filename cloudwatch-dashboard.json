@@ -1,0 +1,300 @@
+{
+  "widgets": [
+      {
+          "height": 6,
+          "width": 24,
+          "y": 6,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/Lambda", "Errors", "FunctionName", "dynamo-to-elastic-56d6c21" ],
+                  [ ".", "ConcurrentExecutions", ".", ".", { "stat": "Maximum" } ],
+                  [ ".", "Invocations", ".", "." ],
+                  [ ".", "Duration", ".", ".", { "stat": "Average" } ],
+                  [ ".", "Throttles", ".", "." ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "title": "Lambda (DynamoDB stream)",
+              "period": 1,
+              "stat": "Sum"
+          }
+      },
+      {
+          "height": 6,
+          "width": 24,
+          "y": 12,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/ApiGateway", "Latency", "Stage", "default-0f4b511", "ApiId", "5d8lwfrkpd", { "stat": "Average" } ],
+                  [ ".", "Count", ".", ".", ".", "." ],
+                  [ ".", "5xx", ".", ".", ".", "." ],
+                  [ ".", "4xx", ".", ".", ".", "." ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "period": 1,
+              "stat": "Sum",
+              "title": "ApiGateway"
+          }
+      },
+      {
+          "height": 6,
+          "width": 24,
+          "y": 24,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/DynamoDB", "ConsumedReadCapacityUnits", "TableName", "webiny-es-6379430" ],
+                  [ ".", "ConsumedWriteCapacityUnits", ".", "." ],
+                  [ "...", "webiny-es-e04e995" ],
+                  [ ".", "ConsumedReadCapacityUnits", ".", "." ],
+                  [ ".", "ConsumedWriteCapacityUnits", ".", "webiny-headless-4efca87" ],
+                  [ ".", "ConsumedReadCapacityUnits", ".", "." ],
+                  [ "...", "webiny-headless-es-a233cdf" ],
+                  [ ".", "ConsumedWriteCapacityUnits", ".", "." ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 1,
+              "title": "DynamoDB"
+          }
+      },
+      {
+          "height": 6,
+          "width": 24,
+          "y": 36,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/ES", "ElasticsearchRequests", "DomainName", "webiny-js-cceffd8", "ClientId", "787091992077", { "stat": "Sum", "visible": false } ],
+                  [ ".", "SysMemoryUtilization", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "ClusterUsedSpace", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "SearchableDocuments", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "ReadIOPS", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "WriteIOPS", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "ReadLatency", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "WriteLatency", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "ReadThroughput", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "WriteThroughput", ".", ".", ".", ".", { "visible": false } ],
+                  [ ".", "SearchableDocuments", ".", ".", ".", ".", { "stat": "Maximum" } ],
+                  [ "...", "webiny-js-b1a6149", ".", ".", { "stat": "Maximum", "visible": false } ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "stat": "Average",
+              "period": 1,
+              "title": "ES documents"
+          }
+      },
+      {
+          "height": 6,
+          "width": 24,
+          "y": 30,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/ES", "2xx", "DomainName", "webiny-js-cceffd8", "ClientId", "787091992077" ],
+                  [ ".", "3xx", ".", ".", ".", "." ],
+                  [ ".", "4xx", ".", ".", ".", "." ],
+                  [ ".", "5xx", ".", ".", ".", "." ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 1,
+              "title": "ES response codes"
+          }
+      },
+      {
+          "height": 6,
+          "width": 24,
+          "y": 0,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/Lambda", "Errors", "FunctionName", "headless-cms-2146c15", "Resource", "headless-cms-2146c15" ],
+                  [ ".", "ConcurrentExecutions", ".", ".", ".", ".", { "stat": "Maximum" } ],
+                  [ ".", "Invocations", ".", ".", ".", "." ],
+                  [ ".", "Duration", ".", ".", ".", ".", { "stat": "Average" } ],
+                  [ ".", "Throttles", ".", ".", ".", "." ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "title": "Lambda (Headless CMS)",
+              "period": 60,
+              "stat": "Sum"
+          }
+      },
+      {
+          "height": 3,
+          "width": 18,
+          "y": 47,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/Lambda", "Invocations" ],
+                  [ ".", "Duration", { "stat": "Average" } ],
+                  [ ".", "Throttles" ]
+              ],
+              "view": "singleValue",
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 60,
+              "stacked": false,
+              "title": "Lambda",
+              "setPeriodToTimeRange": true
+          }
+      },
+      {
+          "height": 3,
+          "width": 12,
+          "y": 50,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ { "expression": "SUM([m1,m4,m5])", "label": "Read units", "id": "e1", "region": "eu-west-2", "period": 60 } ],
+                  [ { "expression": "SUM([m2,m3,m6])", "label": "Write units", "id": "e2", "region": "eu-west-2", "period": 60 } ],
+                  [ "AWS/DynamoDB", "ConsumedReadCapacityUnits", "TableName", "webiny-78844d5", { "id": "m1", "visible": false } ],
+                  [ ".", "ConsumedWriteCapacityUnits", ".", ".", { "id": "m2", "visible": false } ],
+                  [ "...", "webiny-headless-4efca87", { "id": "m3", "visible": false } ],
+                  [ ".", "ConsumedReadCapacityUnits", ".", ".", { "id": "m4", "visible": false } ],
+                  [ "...", "webiny-headless-es-a233cdf", { "id": "m5", "visible": false } ],
+                  [ ".", "ConsumedWriteCapacityUnits", ".", ".", { "id": "m6", "visible": false } ]
+              ],
+              "view": "singleValue",
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 60,
+              "title": "DynamoDb",
+              "setPeriodToTimeRange": true
+          }
+      },
+      {
+          "height": 3,
+          "width": 6,
+          "y": 47,
+          "x": 18,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/ApiGateway", "Count", { "yAxis": "left" } ]
+              ],
+              "view": "singleValue",
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 60,
+              "title": "ApiGateway",
+              "setPeriodToTimeRange": true
+          }
+      },
+      {
+          "height": 3,
+          "width": 12,
+          "y": 50,
+          "x": 12,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ { "expression": "SUM([m2,m3])/1000/1000/1000", "label": "Traffic (GB)", "id": "e1", "region": "eu-west-2", "period": 60 } ],
+                  [ "AWS/CloudFront", "Requests", "Region", "Global", "DistributionId", "E2L3X0M52RLNAH", { "region": "us-east-1", "id": "m1" } ],
+                  [ ".", "BytesDownloaded", ".", ".", ".", ".", { "region": "us-east-1", "visible": false, "id": "m2" } ],
+                  [ ".", "BytesUploaded", ".", ".", ".", ".", { "region": "us-east-1", "visible": false, "id": "m3" } ],
+                  [ ".", "TotalErrorRate", ".", ".", ".", ".", { "region": "us-east-1", "id": "m4", "stat": "Average" } ]
+              ],
+              "view": "singleValue",
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 60,
+              "title": "CloudFront",
+              "setPeriodToTimeRange": true
+          }
+      },
+      {
+          "height": 3,
+          "width": 18,
+          "y": 53,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/ES", "2xx", "DomainName", "webiny-js-cceffd8", "ClientId", "787091992077" ],
+                  [ ".", "3xx", ".", ".", ".", "." ],
+                  [ ".", "4xx", ".", ".", ".", "." ],
+                  [ ".", "5xx", ".", ".", ".", "." ]
+              ],
+              "view": "singleValue",
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 60,
+              "setPeriodToTimeRange": true
+          }
+      },
+      {
+          "height": 6,
+          "width": 24,
+          "y": 18,
+          "x": 0,
+          "type": "metric",
+          "properties": {
+              "metrics": [
+                  [ "AWS/CloudFront", "5xxErrorRate", "Region", "Global", "DistributionId", "E6A6VDMLDZ243", { "region": "us-east-1", "stat": "Maximum" } ],
+                  [ ".", "4xxErrorRate", ".", ".", ".", ".", { "region": "us-east-1" } ],
+                  [ ".", "Requests", ".", ".", ".", ".", { "region": "us-east-1" } ]
+              ],
+              "view": "timeSeries",
+              "stacked": false,
+              "region": "eu-west-2",
+              "stat": "Sum",
+              "period": 60,
+              "title": "CloudFront"
+          }
+      },
+      {
+          "type": "metric",
+          "x": 0,
+          "y": 42,
+          "width": 12,
+          "height": 5,
+          "properties": {
+              "view": "timeSeries",
+              "stacked": false,
+              "metrics": [
+                  [ "AWS/S3", "BucketSizeBytes", "StorageType", "StandardStorage", "BucketName", "delivery-d174b2a", { "period": 86400 } ]
+              ],
+              "region": "eu-west-2"
+          }
+      },
+      {
+          "type": "metric",
+          "x": 12,
+          "y": 42,
+          "width": 12,
+          "height": 5,
+          "properties": {
+              "view": "timeSeries",
+              "stacked": false,
+              "metrics": [
+                  [ "AWS/S3", "NumberOfObjects", "StorageType", "AllStorageTypes", "BucketName", "delivery-d174b2a", { "period": 86400 } ]
+              ],
+              "region": "eu-west-2"
+          }
+      }
+  ]
+}

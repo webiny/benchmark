@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.5">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Webiny benchmark" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -74,7 +74,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument" enabled="true">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n    createOrder(data: \n      {\n        orderId: ${OrderID}\n        orderDate: \&quot;${OrderDate}\&quot;\n        shippingDate: \&quot;${ShipDate}\&quot;\n        unitsSold: ${UnitsSold}\n        unitPrice: ${UnitPrice}\n        totalPrice: ${TotalRevenue}\n        country: {\n          modelId: \&quot;country\&quot;\n          entryId: \&quot;${Country}\&quot;\n        },\n        itemType: {\n          modelId: \&quot;itemType\&quot;\n          entryId: \&quot;${ItemType}\&quot;\n        },\n        salesChannel: {\n          modelId: \&quot;salesChannel\&quot;\n          entryId: \&quot;${SalesChannel}\&quot;\n        },\n        orderPriority: {\n          modelId: \&quot;orderPriority\&quot;\n          entryId: \&quot;${OrderPriority}\&quot;\n        },\n      }) {\n      data {\n        id\n      }\n      error {\n        message\n      }\n    }\n}&quot;}</stringProp>
+                <stringProp name="Argument.value">{&quot;operationName&quot;:null,&quot;query&quot;:&quot;mutation {\n    createOrder(data: \n      {\n        orderId: ${OrderID}\n        orderDate: \&quot;${OrderDate}\&quot;\n        shippingDate: \&quot;${ShipDate}\&quot;\n        unitsSold: ${UnitsSold}\n        unitPrice: ${UnitPrice}\n        totalPrice: ${TotalRevenue}\n        country: {\n          modelId: \&quot;country\&quot;\n          id: \&quot;${Country}\&quot;\n        },\n        itemType: {\n          modelId: \&quot;itemType\&quot;\n          id: \&quot;${ItemType}\&quot;\n        },\n        salesChannel: {\n          modelId: \&quot;salesChannel\&quot;\n          id: \&quot;${SalesChannel}\&quot;\n        },\n        orderPriority: {\n          modelId: \&quot;orderPriority\&quot;\n          id: \&quot;${OrderPriority}\&quot;\n        },\n      }) {\n      data {\n        id\n      }\n      error {\n        message\n      }\n    }\n}&quot;}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -103,19 +103,19 @@
         totalPrice: ${TotalRevenue}
         country: {
           modelId: &quot;country&quot;
-          entryId: &quot;${Country}&quot;
+          id: &quot;${Country}&quot;
         },
         itemType: {
           modelId: &quot;itemType&quot;
-          entryId: &quot;${ItemType}&quot;
+          id: &quot;${ItemType}&quot;
         },
         salesChannel: {
           modelId: &quot;salesChannel&quot;
-          entryId: &quot;${SalesChannel}&quot;
+          id: &quot;${SalesChannel}&quot;
         },
         orderPriority: {
           modelId: &quot;orderPriority&quot;
-          entryId: &quot;${OrderPriority}&quot;
+          id: &quot;${OrderPriority}&quot;
         },
       }) {
       data {
@@ -138,6 +138,10 @@
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">authorization</stringProp>
                 <stringProp name="Header.value">${AUTHORIZATION_TOKEN}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>

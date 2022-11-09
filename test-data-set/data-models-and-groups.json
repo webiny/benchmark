@@ -512,8 +512,8 @@
 				"fields": [
 					{
 						"id": "qTQ92wX49",
-						"fieldId": "type",
-						"label": "Type",
+						"fieldId": "onOrOffline",
+						"label": "On or Offline",
 						"helpText": null,
 						"placeholderText": null,
 						"type": "text",
